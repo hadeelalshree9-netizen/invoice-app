@@ -1,0 +1,5 @@
+streamilt  
+google-genai
+pandas
+openpyxl
+pillow
