@@ -39,7 +39,7 @@ if uploaded_files:
             
             try:
                 response = client.models.generate_content(
-                    model='gemini-1.5-flash',
+                    model='gemini-2.0-flash',
                     contents=[image, prompt],
                     config=types.GenerateContentConfig(
                         response_mime_type="application/json"
@@ -59,7 +59,6 @@ if uploaded_files:
         if all_items:
             df = pd.DataFrame(all_items)
             
-            # التأكد من وجود الأعمدة المطلوبة
             if 'quantity' in df.columns and 'product' in df.columns:
                 df['quantity'] = pd.to_numeric(df['quantity'], errors='coerce').fillna(0)
                 
@@ -70,7 +69,6 @@ if uploaded_files:
                 st.subheader("📊 المجموع الكلي للطلبات")
                 st.dataframe(summary_df, use_container_width=True)
                 
-                # إمكانية التصدير إلى Excel
                 output = io.BytesIO()
                 with pd.ExcelWriter(output, engine='openpyxl') as writer:
                     summary_df.to_excel(writer, index=False, sheet_name='Summary')
