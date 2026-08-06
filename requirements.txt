@@ -1,5 +1,5 @@
-streamilt  
+streamlit
 google-genai
 pandas
 openpyxl
-pillow
+Pillow
